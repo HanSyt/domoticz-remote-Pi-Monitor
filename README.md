@@ -16,7 +16,7 @@ If you want to monitor disk usage, look at https://github.com/Xorfor/Domoticz-Di
 - Install piremotemonitor in /etc/init.d on remote server. 
 - Make both scripts executable : chmod 755 
 - Make the server autostart : sudo update-rc.d piremotemonitor defaults
-- Make devices (hardware virtual-switch) in Domoticz
+- Make devices (hardware virtual-switch) in Domoticz (look at the python script for the device type)
 - Adapt the python script for MQTT server and Domoticz device Indexes at top of the script.
 
 ## Devices
