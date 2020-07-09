@@ -1,6 +1,5 @@
 # PiRemoteMonitor
-Python plugin to monitor temperature, memory usage, etc. from a Remote Raspberry Pi, sending it to an MQTT server in Domoticz format.
-No plugin.py needed at Domoticz.
+Python script to monitor temperature, memory usage, etc. from a Remote Raspberry Pi, sending it to an MQTT server in Domoticz format.
 
 If you want to monitor disk usage, look at https://github.com/Xorfor/Domoticz-Disc-usage-Plugin
 
@@ -16,8 +15,16 @@ If you want to monitor disk usage, look at https://github.com/Xorfor/Domoticz-Di
 - Install piremotemonitor in /etc/init.d on remote server. 
 - Make both scripts executable : chmod 755 
 - Make the server autostart : sudo update-rc.d piremotemonitor defaults
+- Alternatively start the python script from crontab, go to the bottom of the script for instructions
 - Make devices (hardware virtual-switch) in Domoticz (look at the python script for the device type)
 - Adapt the python script for MQTT server and Domoticz device Indexes at top of the script.
+
+## Changes in this fork
+- No plugin needed at Domoticz, the plugin is replaced by MQTT server
+- Uptime converted to days (was linux ticks) 
+- Useable as systemd startup and crontab
+- Adjustable time interfall (default every 60 seconds) in daemon mode
+ 
 
 ## Devices
 The following parameters are displayed:
