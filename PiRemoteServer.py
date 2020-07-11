@@ -36,7 +36,6 @@ idxcpuuptime = "183"            # Custom Sensor - axis: Days - Name System Uptim
 
 # MQTT Publisher Activate
 client = mqtt.Client("P1") # create new isntance
-client.connect(MQTThost) #connect to broker
 # client.publish(topic, message)
 
 class output:
@@ -189,7 +188,9 @@ class output:
 
 
   def encodee(self):
-
+      # Connect to broker
+      client.connect(MQTThost)
+      #
       core = str(self.getVoltage("core"))
       print( "VoltageCore,"+ core )
       client.publish("domoticz/in",'{ "idx": ' + idxcorevoltage + ', "nvalue": 0, "svalue": "' + core + '" }' )
@@ -249,7 +250,10 @@ class output:
       cpuuptime = str(self.getCPUuptime())
       print ("CPUuptime,"+ cpuuptime )
       client.publish("domoticz/in",'{ "idx": ' + idxcpuuptime + ', "nvalue": 0, "svalue": "' + cpuuptime + '" }' )
-
+      #
+      # Disconnect fromo broker
+      client.disconnect(MQTThost)
+  
 
       return
 
